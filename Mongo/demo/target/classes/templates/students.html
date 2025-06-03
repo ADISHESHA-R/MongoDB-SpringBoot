@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student List</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1'); /* Replace with your image */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.65);
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        table {
+            width: 90%;
+            margin: 0 auto 30px auto;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        td {
+            color: #e0e0e0;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+
+        a {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 12px 24px;
+            background-color: #00b4d8;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0096c7;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <h1>All Students</h1>
+    <table border="0">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Status</th>
+            <th>Marks</th>
+            <th>Subjects</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.status}"></td>
+            <td th:text="${student.marks}"></td>
+            <td th:text="${student.subjects}"></td>
+        </tr>
+    </table>
+    <a href="/students/add">Add New Student</a>
+</div>
+</body>
+</html>

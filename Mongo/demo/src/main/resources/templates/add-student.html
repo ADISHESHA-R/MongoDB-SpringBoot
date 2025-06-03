@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Student</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #c3ecf7, #a0c4ff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1500px;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: rotateX(5deg) rotateY(5deg);
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+        }
+
+        .form-container:hover {
+            transform: rotateX(0deg) rotateY(0deg) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0077cc;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+            transform: translateZ(10px);
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #f0f0f0;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1),
+                        inset -2px -2px 5px rgba(255,255,255,0.7);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus {
+            background: #e0f7ff;
+            box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1),
+                        0 0 8px rgba(0,123,255,0.6);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #0077cc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #005999;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h1>Add Student</h1>
+    <form th:action="@{/students}" method="post">
+        <label>Name:</label>
+        <input type="text" name="name" required/>
+
+        <label>Age:</label>
+        <input type="number" name="age" required/>
+
+        <label>Email:</label>
+        <input type="email" name="email" required/>
+
+        <label>Status:</label>
+        <input type="text" name="status" required/>
+
+        <label>Subjects:</label>
+        <input type="text" name="subjects" required/>
+
+        <label>Marks:</label>
+        <input type="number" step="0.01" name="marks" required/>
+
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/students">Back to List</a>
+</div>
+</body>
+</html>
